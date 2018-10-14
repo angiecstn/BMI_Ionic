@@ -33,3 +33,4 @@ describe("About", () => {
     expect(aboutpage).toBeTruthy();
     expect(aboutpage instanceof AboutPage).toEqual(true);
   });
+})

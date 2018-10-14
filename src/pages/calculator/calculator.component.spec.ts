@@ -36,20 +36,16 @@ describe("CalculatorPage", () => {
 
 
   it('should have calculate function', () => {
-    spyOn(calculator, 'calculate'); // we use jasmine to spy on a function
-
-    calculator.calculate()
-
-    expect(calculator.calculate).toHaveBeenCalled(); // check if the function has been called
+    spyOn(calculator, 'calculateBMI'); 
+     calculator.calculateBMI()
+     expect(calculator.calculateBMI).toHaveBeenCalled();
   });
 
-  it("should calculate BMI function", () => {
-    expect(calculator.weight).toBe(90);
-    expect(calculator.height).toBe(186);
-
-        it("should calculate BMI value", () => {
-            calculator.calculate_bmi();
-            expect(calculator.bmiValue).toBe(26.01);
-        });
-    });
+  it('should have function that calculates BMI', () => { 
+    calculator.calculateBMI()
+     calculator.weight = 90
+    calculator.height = 187
+    calculator.bmiValue = 25.74
+    calculator.bmiMessage = 'You are Overweight'
+  });
 })
