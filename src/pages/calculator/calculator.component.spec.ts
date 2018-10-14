@@ -43,9 +43,15 @@ describe("CalculatorPage", () => {
 
   it('should have function that calculates BMI', () => { 
     calculator.calculateBMI()
-     calculator.weight = 90
+    calculator.weight = 90
     calculator.height = 187
     calculator.bmiValue = 25.74
     calculator.bmiMessage = 'You are Overweight'
+  });
+
+  it('should set underweight as message if bmi < 18.5', () => {
+    calculator.bmiValue = 15
+    calculator.setBMIMessage()
+    expect(calculator.bmiMessage).toEqual("Underweight");
   });
 })
