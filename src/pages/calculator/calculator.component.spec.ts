@@ -42,16 +42,33 @@ describe("CalculatorPage", () => {
   });
 
   it('should have function that calculates BMI', () => { 
-    calculator.calculateBMI()
     calculator.weight = 90
     calculator.height = 187
-    calculator.bmiValue = 25.74
-    calculator.bmiMessage = 'You are Overweight'
+    calculator.calculateBMI()
+    expect(calculator.bmiMessage).toEqual('Overweight');
   });
 
-  it('should set underweight as message if bmi < 18.5', () => {
+  it('should set \'Underweight\' as message if bmi < 18.5', () => {
     calculator.bmiValue = 15
     calculator.setBMIMessage()
     expect(calculator.bmiMessage).toEqual("Underweight");
+  });
+
+  it('should set \'Normal\' as message if 18.5 < bmi < 25', () => {
+    calculator.bmiValue = 19
+    calculator.setBMIMessage()
+    expect(calculator.bmiMessage).toEqual("Normal");
+  });
+
+  it('should set \'Overweight\' as message if 25 < bmi < 30', () => {
+    calculator.bmiValue = 26
+    calculator.setBMIMessage()
+    expect(calculator.bmiMessage).toEqual("Overweight");
+  });
+
+  it('should set \'Obese\' as message if bmi > 30', () => {
+    calculator.bmiValue = 32
+    calculator.setBMIMessage()
+    expect(calculator.bmiMessage).toEqual("Obese");
   });
 })
